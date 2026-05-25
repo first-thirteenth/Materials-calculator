@@ -1,0 +1,28 @@
+{
+  "header": {
+    "title": "Materials Calculator"
+  },
+  "hero": {
+    "title": "Calculate materials",
+    "subtitle": "Accurate calculation of building materials without extra formulas"
+  },
+  "calculators": {
+    "label": "Calculators",
+    "brick": {
+      "title": "Brick",
+      "description": "Number of bricks by wall area"
+    },
+    "paint": {
+      "title": "Paint",
+      "description": "Litres of paint for walls and ceilings"
+    },
+    "concrete": {
+      "title": "Concrete",
+      "description": "Volume of concrete for foundation or screed"
+    }
+  },
+  "theme": {
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme"
+  }
+}

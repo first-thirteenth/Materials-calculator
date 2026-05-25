@@ -1,0 +1,28 @@
+{
+  "header": {
+    "title": "Kalkulator materiałów"
+  },
+  "hero": {
+    "title": "Oblicz materiały",
+    "subtitle": "Dokładne obliczenia materiałów budowlanych bez zbędnych wzorów"
+  },
+  "calculators": {
+    "label": "Kalkulatory",
+    "brick": {
+      "title": "Cegła",
+      "description": "Liczba cegieł według powierzchni ścian"
+    },
+    "paint": {
+      "title": "Farba",
+      "description": "Litry farby do ścian i sufitów"
+    },
+    "concrete": {
+      "title": "Beton",
+      "description": "Objętość betonu do fundamentów lub wylewki"
+    }
+  },
+  "theme": {
+    "light": "Włącz jasny motyw",
+    "dark": "Włącz ciemny motyw"
+  }
+}
