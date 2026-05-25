@@ -24,5 +24,27 @@
   "theme": {
     "light": "Włącz jasny motyw",
     "dark": "Włącz ciemny motyw"
+  },
+  "auth": {
+    "loginTitle": "Zaloguj się",
+    "loginSubtitle": "Zaloguj się, aby zapisywać obliczenia",
+    "registerTitle": "Rejestracja",
+    "registerSubtitle": "Utwórz konto, aby zapisywać historię",
+    "name": "Imię",
+    "email": "Email",
+    "password": "Hasło",
+    "loginBtn": "Zaloguj się",
+    "registerBtn": "Utwórz konto",
+    "googleBtn": "Kontynuuj z Google",
+    "or": "lub",
+    "noAccount": "Nie masz konta?",
+    "hasAccount": "Masz już konto?",
+    "registerLink": "Zarejestruj się",
+    "loginLink": "Zaloguj się",
+    "loading": "Ładowanie...",
+    "errorInvalidCredentials": "Nieprawidłowy email lub hasło",
+    "errorEmailInUse": "Email jest już używany",
+    "errorWeakPassword": "Hasło musi mieć co najmniej 6 znaków",
+    "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   }
 }

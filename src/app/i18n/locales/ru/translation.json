@@ -24,5 +24,27 @@
   "theme": {
     "light": "Включить светлую тему",
     "dark": "Включить тёмную тему"
+  },
+  "auth": {
+    "loginTitle": "Войти",
+    "loginSubtitle": "Войдите, чтобы сохранять расчёты",
+    "registerTitle": "Регистрация",
+    "registerSubtitle": "Создайте аккаунт для сохранения истории",
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "loginBtn": "Войти",
+    "registerBtn": "Создать аккаунт",
+    "googleBtn": "Продолжить с Google",
+    "or": "или",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Уже есть аккаунт?",
+    "registerLink": "Зарегистрироваться",
+    "loginLink": "Войти",
+    "loading": "Загрузка...",
+    "errorInvalidCredentials": "Неверный email или пароль",
+    "errorEmailInUse": "Email уже используется",
+    "errorWeakPassword": "Пароль должен быть не менее 6 символов",
+    "errorGeneral": "Что-то пошло не так. Попробуйте снова"
   }
 }

@@ -24,5 +24,27 @@
   "theme": {
     "light": "Switch to light theme",
     "dark": "Switch to dark theme"
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Sign in to save your calculations",
+    "registerTitle": "Create account",
+    "registerSubtitle": "Register to save your history",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "loginBtn": "Sign in",
+    "registerBtn": "Create account",
+    "googleBtn": "Continue with Google",
+    "or": "or",
+    "noAccount": "No account?",
+    "hasAccount": "Already have an account?",
+    "registerLink": "Register",
+    "loginLink": "Sign in",
+    "loading": "Loading...",
+    "errorInvalidCredentials": "Invalid email or password",
+    "errorEmailInUse": "Email is already in use",
+    "errorWeakPassword": "Password must be at least 6 characters",
+    "errorGeneral": "Something went wrong. Please try again"
   }
 }

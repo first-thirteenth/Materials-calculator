@@ -24,5 +24,27 @@
   "theme": {
     "light": "Увімкнути світлу тему",
     "dark": "Увімкнути темну тему"
+  },
+  "auth": {
+    "loginTitle": "Увійти",
+    "loginSubtitle": "Увійдіть, щоб зберігати розрахунки",
+    "registerTitle": "Реєстрація",
+    "registerSubtitle": "Створіть акаунт для збереження історії",
+    "name": "Ім'я",
+    "email": "Email",
+    "password": "Пароль",
+    "loginBtn": "Увійти",
+    "registerBtn": "Створити акаунт",
+    "googleBtn": "Продовжити з Google",
+    "or": "або",
+    "noAccount": "Немає акаунту?",
+    "hasAccount": "Вже є акаунт?",
+    "registerLink": "Зареєструватись",
+    "loginLink": "Увійти",
+    "loading": "Завантаження...",
+    "errorInvalidCredentials": "Невірний email або пароль",
+    "errorEmailInUse": "Email вже використовується",
+    "errorWeakPassword": "Пароль повинен бути не менше 6 символів",
+    "errorGeneral": "Щось пішло не так. Спробуйте знову"
   }
 }
