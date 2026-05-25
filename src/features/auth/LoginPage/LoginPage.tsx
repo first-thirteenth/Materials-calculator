@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Lock } from "lucide-react";
 import { useAuth } from "../../../app/hooks/useAuth";
+import { getAuthErrorMessage } from "../../../shared/utils/getAuthErrorMessage";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
@@ -22,8 +23,8 @@ export function LoginPage() {
     try {
       await signIn(email, password);
       navigate("/");
-    } catch {
-      setError(t("auth.errorInvalidCredentials"));
+    } catch (error) {
+      setError(getAuthErrorMessage(error, t));
     } finally {
       setLoading(false);
     }
@@ -31,11 +32,14 @@ export function LoginPage() {
 
   async function handleGoogle() {
     setError("");
+    setLoading(true);
     try {
       await signInWithGoogle();
       navigate("/");
-    } catch {
-      setError(t("auth.errorGeneral"));
+    } catch (error) {
+      setError(getAuthErrorMessage(error, t));
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -91,6 +95,7 @@ export function LoginPage() {
           className={styles.btnGoogle}
           onClick={handleGoogle}
           type="button"
+          disabled={loading}
         >
           <svg width="18" height="18" viewBox="0 0 48 48">
             <path

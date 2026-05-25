@@ -7,6 +7,22 @@
   padding: 0;
 }
 
+/* ─── Theme defaults (fallback) ─────────────────────── */
+:root {
+  --color-bg: #f2f2f7;
+  --color-bg-secondary: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #8e8e93;
+  --color-primary: #007aff;
+  --color-primary-hover: #0071e3;
+  --color-border: rgba(60, 60, 67, 0.18);
+  --color-shadow: rgba(0, 0, 0, 0.07);
+  --icon-orange: #ff9500;
+  --icon-blue: #007aff;
+  --icon-gray: #8e8e93;
+}
+
 /* ─── iOS Light theme ────────────────────────────────── */
 :root[data-theme="light"] {
   --color-bg: #f2f2f7;

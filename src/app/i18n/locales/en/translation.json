@@ -45,6 +45,16 @@
     "errorInvalidCredentials": "Invalid email or password",
     "errorEmailInUse": "Email is already in use",
     "errorWeakPassword": "Password must be at least 6 characters",
+    "errorFirebaseNotConfigured": "Firebase is not configured. Add VITE_FIREBASE_* values to .env.local and restart the app",
+    "errorPopupBlocked": "The browser blocked the sign-in popup. Allow popups for this site",
+    "errorPopupClosed": "The sign-in popup was closed before authentication completed",
+    "errorUnauthorizedDomain": "Domain is not authorized in Firebase. Add localhost to Authorized domains",
+    "errorProviderDisabled": "Google sign-in is disabled in Firebase Console",
+    "errorAuthConfigurationMissing": "Firebase Authentication is not configured for this project. Enable Authentication in Firebase Console",
+    "errorNetwork": "Network error. Check your connection and try again",
+    "errorInvalidApiKey": "Invalid Firebase API key in .env.local",
+    "errorAccountExists": "This email already exists with a different sign-in method",
+    "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
   }
 }

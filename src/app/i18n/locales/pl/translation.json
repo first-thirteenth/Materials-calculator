@@ -45,6 +45,16 @@
     "errorInvalidCredentials": "Nieprawidłowy email lub hasło",
     "errorEmailInUse": "Email jest już używany",
     "errorWeakPassword": "Hasło musi mieć co najmniej 6 znaków",
+    "errorFirebaseNotConfigured": "Firebase nie jest skonfigurowany. Dodaj VITE_FIREBASE_* do .env.local i uruchom aplikację ponownie",
+    "errorPopupBlocked": "Przeglądarka zablokowała okno logowania. Zezwól na wyskakujące okna dla tej strony",
+    "errorPopupClosed": "Okno logowania zostało zamknięte przed zakończeniem autoryzacji",
+    "errorUnauthorizedDomain": "Domena nie jest autoryzowana w Firebase. Dodaj localhost do Authorized domains",
+    "errorProviderDisabled": "Logowanie przez Google jest wyłączone w Firebase Console",
+    "errorAuthConfigurationMissing": "Firebase Authentication nie jest skonfigurowany dla tego projektu. Włącz Authentication w Firebase Console",
+    "errorNetwork": "Błąd sieci. Sprawdź połączenie i spróbuj ponownie",
+    "errorInvalidApiKey": "Nieprawidłowy Firebase API key w .env.local",
+    "errorAccountExists": "Ten email już istnieje z inną metodą logowania",
+    "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   }
 }

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Lock, User } from "lucide-react";
 import { useAuth } from "../../../app/hooks/useAuth";
+import { getAuthErrorMessage } from "../../../shared/utils/getAuthErrorMessage";
 import styles from "./RegisterPage.module.css";
 
 export function RegisterPage() {
@@ -27,8 +28,8 @@ export function RegisterPage() {
     try {
       await signUp(email, password, name);
       navigate("/");
-    } catch {
-      setError(t("auth.errorEmailInUse"));
+    } catch (error) {
+      setError(getAuthErrorMessage(error, t));
     } finally {
       setLoading(false);
     }
@@ -36,11 +37,14 @@ export function RegisterPage() {
 
   async function handleGoogle() {
     setError("");
+    setLoading(true);
     try {
       await signInWithGoogle();
       navigate("/");
-    } catch {
-      setError(t("auth.errorGeneral"));
+    } catch (error) {
+      setError(getAuthErrorMessage(error, t));
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -109,6 +113,7 @@ export function RegisterPage() {
           className={styles.btnGoogle}
           onClick={handleGoogle}
           type="button"
+          disabled={loading}
         >
           <svg width="18" height="18" viewBox="0 0 48 48">
             <path

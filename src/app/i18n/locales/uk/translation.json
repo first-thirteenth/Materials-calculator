@@ -45,6 +45,16 @@
     "errorInvalidCredentials": "Невірний email або пароль",
     "errorEmailInUse": "Email вже використовується",
     "errorWeakPassword": "Пароль повинен бути не менше 6 символів",
+    "errorFirebaseNotConfigured": "Firebase не налаштований. Додайте VITE_FIREBASE_* у .env.local і перезапустіть застосунок",
+    "errorPopupBlocked": "Браузер заблокував вікно входу. Дозвольте спливаючі вікна для цього сайту",
+    "errorPopupClosed": "Вікно входу було закрито до завершення авторизації",
+    "errorUnauthorizedDomain": "Домен не авторизований у Firebase. Додайте localhost у Authorized domains",
+    "errorProviderDisabled": "Вхід через Google вимкнено у Firebase Console",
+    "errorAuthConfigurationMissing": "Firebase Authentication не налаштований для цього проєкту. Увімкніть Authentication у Firebase Console",
+    "errorNetwork": "Помилка мережі. Перевірте підключення і спробуйте ще раз",
+    "errorInvalidApiKey": "Невірний Firebase API key у .env.local",
+    "errorAccountExists": "Цей email вже існує з іншим методом входу",
+    "errorTooManyRequests": "Занадто багато спроб. Спробуйте пізніше",
     "errorGeneral": "Щось пішло не так. Спробуйте знову"
   }
 }

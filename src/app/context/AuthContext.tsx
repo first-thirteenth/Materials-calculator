@@ -4,32 +4,40 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut as firebaseSignOut,
   updateProfile,
   type User,
 } from "firebase/auth";
-import { auth, googleProvider } from "../firebase/firebase";
+import { auth, getFirebaseAuthOrThrow } from "../firebase/firebase";
 import { AuthContext } from "./AuthContextValue";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => Boolean(auth));
 
   useEffect(() => {
+    if (!auth) {
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
 
   async function signIn(email: string, password: string) {
-    await signInWithEmailAndPassword(auth, email, password);
+    const { auth: safeAuth } = getFirebaseAuthOrThrow();
+    await signInWithEmailAndPassword(safeAuth, email, password);
   }
 
   async function signUp(email: string, password: string, name: string) {
+    const { auth: safeAuth } = getFirebaseAuthOrThrow();
     const { user } = await createUserWithEmailAndPassword(
-      auth,
+      safeAuth,
       email,
       password,
     );
@@ -37,11 +45,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   async function signInWithGoogle() {
-    await signInWithPopup(auth, googleProvider);
+    const { auth: safeAuth, googleProvider: safeGoogleProvider } =
+      getFirebaseAuthOrThrow();
+
+    try {
+      await signInWithPopup(safeAuth, safeGoogleProvider);
+    } catch (error) {
+      const code =
+        typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        typeof (error as { code: unknown }).code === "string"
+          ? (error as { code: string }).code
+          : "";
+
+      if (code === "auth/popup-blocked") {
+        await signInWithRedirect(safeAuth, safeGoogleProvider);
+        return;
+      }
+
+      throw error;
+    }
   }
 
   async function signOut() {
-    await firebaseSignOut(auth);
+    const { auth: safeAuth } = getFirebaseAuthOrThrow();
+    await firebaseSignOut(safeAuth);
   }
 
   return (
