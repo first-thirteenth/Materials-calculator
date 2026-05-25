@@ -4,6 +4,7 @@ import type { User } from "firebase/auth";
 export interface AuthContextValue {
   user: User | null;
   loading: boolean;
+  isGoogleSignInEnabled: boolean;
   redirectAuthError: unknown | null;
   clearRedirectAuthError: () => void;
   signIn: (email: string, password: string) => Promise<void>;

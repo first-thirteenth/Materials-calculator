@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Lock } from "lucide-react";
@@ -10,8 +10,10 @@ import styles from "./LoginPage.module.css";
 export function LoginPage() {
   const { t } = useTranslation();
   const {
+    user,
     signIn,
     signInWithGoogle,
+    isGoogleSignInEnabled,
     redirectAuthError,
     clearRedirectAuthError,
   } = useAuth();
@@ -25,6 +27,12 @@ export function LoginPage() {
     ? getAuthErrorMessage(redirectAuthError, t)
     : "";
   const displayedError = error || redirectErrorMessage;
+
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -47,6 +55,7 @@ export function LoginPage() {
     setLoading(true);
     try {
       await signInWithGoogle();
+      navigate("/");
     } catch (error) {
       console.error("[Auth][Google][LoginPage]", error);
       setError(getAuthErrorMessage(error, t));
@@ -129,7 +138,11 @@ export function LoginPage() {
           </svg>
           {t("auth.googleBtn")}
         </button>
-        <p className={styles.redirectHint}>{t("auth.googleRedirectHint")}</p>
+        <p className={styles.redirectHint}>
+          {isGoogleSignInEnabled
+            ? t("auth.googleRedirectHint")
+            : t("auth.googleDisabledHint")}
+        </p>
         <FirebaseAuthDiagnostics />
 
         <p className={styles.footer}>

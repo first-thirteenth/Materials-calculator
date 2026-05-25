@@ -2,6 +2,10 @@ import type { TFunction } from "i18next";
 
 export function getAuthErrorMessage(error: unknown, t: TFunction): string {
   const message = error instanceof Error ? error.message.toLowerCase() : "";
+  const currentDomain =
+    typeof window !== "undefined" && window.location.hostname
+      ? window.location.hostname
+      : "localhost";
 
   if (
     error instanceof Error &&
@@ -12,6 +16,10 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
 
   if (message.includes("resource-not-found")) {
     return t("auth.errorAuthConfigurationMissing");
+  }
+
+  if (message.includes("unexpected number in json")) {
+    return t("auth.errorPopupBlocked");
   }
 
   const code =
@@ -36,7 +44,7 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
     case "auth/popup-closed-by-user":
       return t("auth.errorPopupClosed");
     case "auth/unauthorized-domain":
-      return t("auth.errorUnauthorizedDomain");
+      return t("auth.errorUnauthorizedDomain", { domain: currentDomain });
     case "auth/operation-not-allowed":
       return t("auth.errorProviderDisabled");
     case "auth/configuration-not-found":
@@ -45,6 +53,8 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
       return message.includes("resource-not-found")
         ? t("auth.errorAuthConfigurationMissing")
         : t("auth.errorGeneral");
+    case "auth/redirect-result-missing":
+      return t("auth.errorRedirectResultMissing");
     case "auth/network-request-failed":
       return t("auth.errorNetwork");
     case "auth/invalid-api-key":
