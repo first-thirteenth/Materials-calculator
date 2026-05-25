@@ -1,0 +1,86 @@
+/* iOS table view cell style */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  background-color: var(--color-bg-card);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease;
+}
+
+/* iOS press state */
+.card:active {
+  background-color: var(--color-bg);
+}
+
+/* iOS separator line (only between cells, not after last) */
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 4.25rem;
+  right: 0;
+  height: 0.5px;
+  background-color: var(--color-border);
+}
+
+.card:last-child::after {
+  display: none;
+}
+
+/* iOS app icon style */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 9px; /* iOS icon corner radius */
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 1.0625rem; /* 17px — iOS Headline */
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 0.1rem;
+}
+
+.description {
+  font-size: 0.8125rem; /* 13px — iOS Caption 1 */
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* iOS chevron */
+.arrow {
+  color: var(--color-border);
+  min-width: 16px;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(3px);
+  color: var(--color-primary);
+}

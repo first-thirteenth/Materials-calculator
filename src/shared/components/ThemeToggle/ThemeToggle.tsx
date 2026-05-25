@@ -1,7 +1,8 @@
-import styles from './ThemeToggle.module.css';
+import { Sun, Moon } from "lucide-react";
+import styles from "./ThemeToggle.module.css";
 
 interface ThemeToggleProps {
-  theme: 'light' | 'dark';
+  theme: "light" | "dark";
   onToggle: () => void;
 }
 
@@ -10,9 +11,11 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
     <button
       className={styles.toggle}
       onClick={onToggle}
-      aria-label={theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему'}
+      aria-label={
+        theme === "light" ? "Включить тёмную тему" : "Включить светлую тему"
+      }
     >
-      {theme === 'light' ? '🌙' : '☀️'}
+      {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
     </button>
   );
 }

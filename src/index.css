@@ -1,41 +1,93 @@
 ﻿/* ─── Reset ─────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ─── Light theme (default) ──────────────────────────── */
+/* ─── iOS Light theme ────────────────────────────────── */
 :root[data-theme="light"] {
-  --color-bg:             #ffffff;
-  --color-bg-secondary:   #f8fafc;
-  --color-bg-card:        #ffffff;
-  --color-text:           #0f172a;
-  --color-text-secondary: #64748b;
-  --color-primary:        #2563eb;
-  --color-primary-hover:  #1d4ed8;
-  --color-border:         #e2e8f0;
-  --color-shadow:         rgba(0, 0, 0, 0.08);
+  --color-bg: #f2f2f7;
+  --color-bg-secondary: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #8e8e93;
+  --color-primary: #007aff;
+  --color-primary-hover: #0071e3;
+  --color-border: rgba(60, 60, 67, 0.18);
+  --color-shadow: rgba(0, 0, 0, 0.07);
+  --icon-orange: #ff9500;
+  --icon-blue: #007aff;
+  --icon-gray: #8e8e93;
 }
 
-/* ─── Dark theme ─────────────────────────────────────── */
+/* ─── iOS Dark theme ─────────────────────────────────── */
 :root[data-theme="dark"] {
-  --color-bg:             #0f172a;
-  --color-bg-secondary:   #1e293b;
-  --color-bg-card:        #1e293b;
-  --color-text:           #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-primary:        #3b82f6;
-  --color-primary-hover:  #60a5fa;
-  --color-border:         #334155;
-  --color-shadow:         rgba(0, 0, 0, 0.3);
+  --color-bg: #000000;
+  --color-bg-secondary: #1c1c1e;
+  --color-bg-card: #1c1c1e;
+  --color-text: #ffffff;
+  --color-text-secondary: #8e8e93;
+  --color-primary: #0a84ff;
+  --color-primary-hover: #409cff;
+  --color-border: rgba(84, 84, 88, 0.55);
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --icon-orange: #ff9f0a;
+  --icon-blue: #0a84ff;
+  --icon-gray: #636366;
 }
 
 /* ─── Global ─────────────────────────────────────────── */
 body {
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "SF Pro Display",
+    system-ui,
+    sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.5;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+  --color-text-secondary: #64748b;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-border: #e2e8f0;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Dark theme ─────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-border: #334155;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Global ─────────────────────────────────────────── */
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
