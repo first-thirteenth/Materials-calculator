@@ -1,11 +1,17 @@
 import type { TFunction } from "i18next";
 
 export function getAuthErrorMessage(error: unknown, t: TFunction): string {
+  const message = error instanceof Error ? error.message.toLowerCase() : "";
+
   if (
     error instanceof Error &&
     error.message.includes("Firebase auth is not configured")
   ) {
     return t("auth.errorFirebaseNotConfigured");
+  }
+
+  if (message.includes("resource-not-found")) {
+    return t("auth.errorAuthConfigurationMissing");
   }
 
   const code =
@@ -35,6 +41,10 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
       return t("auth.errorProviderDisabled");
     case "auth/configuration-not-found":
       return t("auth.errorAuthConfigurationMissing");
+    case "auth/internal-error":
+      return message.includes("resource-not-found")
+        ? t("auth.errorAuthConfigurationMissing")
+        : t("auth.errorGeneral");
     case "auth/network-request-failed":
       return t("auth.errorNetwork");
     case "auth/invalid-api-key":
@@ -44,6 +54,8 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
     case "auth/too-many-requests":
       return t("auth.errorTooManyRequests");
     default:
-      return t("auth.errorGeneral");
+      return code
+        ? `${t("auth.errorGeneral")} (${code})`
+        : t("auth.errorGeneral");
   }
 }

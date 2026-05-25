@@ -2,13 +2,43 @@ import { initializeApp, type FirebaseOptions } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-const firebaseConfig = {
+function normalizeAuthDomain(rawAuthDomain: string, rawProjectId: string) {
+  const authDomain = rawAuthDomain.trim();
+  const projectId = rawProjectId.trim();
+  const isLocalHostDomain =
+    authDomain === "localhost" || authDomain.startsWith("localhost:");
+
+  if (!isLocalHostDomain) {
+    return authDomain;
+  }
+
+  // In production builds, a localhost authDomain breaks OAuth redirect flow.
+  if (import.meta.env.PROD && projectId.length > 0) {
+    return `${projectId}.firebaseapp.com`;
+  }
+
+  return authDomain;
+}
+
+const firebaseCoreConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  authDomain: normalizeAuthDomain(
+    String(import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ?? ""),
+    String(import.meta.env.VITE_FIREBASE_PROJECT_ID ?? ""),
+  ),
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
+
+const measurementId = String(
+  import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ?? "",
+).trim();
+
+const firebaseConfig: FirebaseOptions = {
+  ...firebaseCoreConfig,
+  ...(measurementId.length > 0 ? { measurementId } : {}),
 };
 
 function isPlaceholderValue(value: string) {
@@ -32,7 +62,7 @@ function hasValidConfig(config: Record<string, unknown>) {
   );
 }
 
-export const isFirebaseConfigured = hasValidConfig(firebaseConfig);
+export const isFirebaseConfigured = hasValidConfig(firebaseCoreConfig);
 
 const app = isFirebaseConfigured
   ? initializeApp(firebaseConfig as FirebaseOptions)
@@ -41,6 +71,27 @@ const app = isFirebaseConfigured
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
 export const googleProvider = app ? new GoogleAuthProvider() : null;
+
+export interface FirebaseAuthDiagnostics {
+  projectId: string;
+  authDomain: string;
+  isFirebaseConfigured: boolean;
+  isProdBuild: boolean;
+  isAuthDomainLocalhost: boolean;
+}
+
+export function getFirebaseAuthDiagnostics(): FirebaseAuthDiagnostics {
+  const authDomain = String(firebaseConfig.authDomain ?? "").trim();
+
+  return {
+    projectId: String(firebaseConfig.projectId ?? "").trim(),
+    authDomain,
+    isFirebaseConfigured,
+    isProdBuild: import.meta.env.PROD,
+    isAuthDomainLocalhost:
+      authDomain === "localhost" || authDomain.startsWith("localhost:"),
+  };
+}
 
 export function getFirebaseAuthOrThrow() {
   if (!auth || !googleProvider) {

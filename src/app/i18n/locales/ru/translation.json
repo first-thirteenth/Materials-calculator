@@ -36,6 +36,7 @@
     "loginBtn": "Войти",
     "registerBtn": "Создать аккаунт",
     "googleBtn": "Продолжить с Google",
+    "googleRedirectHint": "После нажатия откроется перенаправление на Google в этой же вкладке",
     "or": "или",
     "noAccount": "Нет аккаунта?",
     "hasAccount": "Уже есть аккаунт?",

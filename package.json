@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "firebase:login": "npx firebase-tools login",
+    "firebase:deploy": "npm run build && npx firebase-tools deploy --only hosting",
+    "firebase:deploy:ci": "npm run build && npx firebase-tools deploy --only hosting --non-interactive"
   },
   "dependencies": {
     "firebase": "^12.13.0",

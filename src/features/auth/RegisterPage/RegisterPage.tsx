@@ -4,11 +4,17 @@ import { useTranslation } from "react-i18next";
 import { Mail, Lock, User } from "lucide-react";
 import { useAuth } from "../../../app/hooks/useAuth";
 import { getAuthErrorMessage } from "../../../shared/utils/getAuthErrorMessage";
+import { FirebaseAuthDiagnostics } from "../../../shared/components/FirebaseAuthDiagnostics/FirebaseAuthDiagnostics";
 import styles from "./RegisterPage.module.css";
 
 export function RegisterPage() {
   const { t } = useTranslation();
-  const { signUp, signInWithGoogle } = useAuth();
+  const {
+    signUp,
+    signInWithGoogle,
+    redirectAuthError,
+    clearRedirectAuthError,
+  } = useAuth();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -16,9 +22,14 @@ export function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const redirectErrorMessage = redirectAuthError
+    ? getAuthErrorMessage(redirectAuthError, t)
+    : "";
+  const displayedError = error || redirectErrorMessage;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    clearRedirectAuthError();
     setError("");
     if (password.length < 6) {
       setError(t("auth.errorWeakPassword"));
@@ -36,12 +47,13 @@ export function RegisterPage() {
   }
 
   async function handleGoogle() {
+    clearRedirectAuthError();
     setError("");
     setLoading(true);
     try {
       await signInWithGoogle();
-      navigate("/");
     } catch (error) {
+      console.error("[Auth][Google][RegisterPage]", error);
       setError(getAuthErrorMessage(error, t));
     } finally {
       setLoading(false);
@@ -94,7 +106,7 @@ export function RegisterPage() {
             />
           </div>
 
-          {error && <p className={styles.error}>{error}</p>}
+          {displayedError && <p className={styles.error}>{displayedError}</p>}
 
           <button
             className={styles.btnPrimary}
@@ -135,6 +147,8 @@ export function RegisterPage() {
           </svg>
           {t("auth.googleBtn")}
         </button>
+        <p className={styles.redirectHint}>{t("auth.googleRedirectHint")}</p>
+        <FirebaseAuthDiagnostics />
 
         <p className={styles.footer}>
           {t("auth.hasAccount")}{" "}

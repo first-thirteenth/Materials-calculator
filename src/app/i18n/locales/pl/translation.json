@@ -36,6 +36,7 @@
     "loginBtn": "Zaloguj się",
     "registerBtn": "Utwórz konto",
     "googleBtn": "Kontynuuj z Google",
+    "googleRedirectHint": "Po kliknięciu nastąpi przekierowanie do Google w tej samej karcie",
     "or": "lub",
     "noAccount": "Nie masz konta?",
     "hasAccount": "Masz już konto?",

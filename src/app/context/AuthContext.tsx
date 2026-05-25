@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import {
+  getRedirectResult,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -15,11 +16,19 @@ import { AuthContext } from "./AuthContextValue";
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(() => Boolean(auth));
+  const [redirectAuthError, setRedirectAuthError] = useState<unknown | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!auth) {
       return;
     }
+
+    void getRedirectResult(auth).catch((error: unknown) => {
+      console.error("[Auth][Google][RedirectResult]", error);
+      setRedirectAuthError(error);
+    });
 
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
@@ -48,8 +57,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { auth: safeAuth, googleProvider: safeGoogleProvider } =
       getFirebaseAuthOrThrow();
 
+    setRedirectAuthError(null);
+
     try {
       await signInWithPopup(safeAuth, safeGoogleProvider);
+      return;
     } catch (error) {
       const code =
         typeof error === "object" &&
@@ -59,13 +71,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           ? (error as { code: string }).code
           : "";
 
-      if (code === "auth/popup-blocked") {
-        await signInWithRedirect(safeAuth, safeGoogleProvider);
-        return;
-      }
+      const shouldFallbackToRedirect =
+        code === "auth/popup-blocked" ||
+        code === "auth/popup-closed-by-user" ||
+        code === "auth/cancelled-popup-request" ||
+        code === "auth/internal-error";
 
-      throw error;
+      if (!shouldFallbackToRedirect) {
+        throw error;
+      }
     }
+
+    await signInWithRedirect(safeAuth, safeGoogleProvider);
+  }
+
+  function clearRedirectAuthError() {
+    setRedirectAuthError(null);
   }
 
   async function signOut() {
@@ -75,7 +96,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, signIn, signUp, signInWithGoogle, signOut }}
+      value={{
+        user,
+        loading,
+        redirectAuthError,
+        clearRedirectAuthError,
+        signIn,
+        signUp,
+        signInWithGoogle,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>

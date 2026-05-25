@@ -36,6 +36,7 @@
     "loginBtn": "Sign in",
     "registerBtn": "Create account",
     "googleBtn": "Continue with Google",
+    "googleRedirectHint": "After clicking, you will be redirected to Google in the same tab",
     "or": "or",
     "noAccount": "No account?",
     "hasAccount": "Already have an account?",

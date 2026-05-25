@@ -136,6 +136,14 @@
   opacity: 0.7;
 }
 
+.redirectHint {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  margin-top: 0.625rem;
+  text-align: center;
+}
+
 .footer {
   color: var(--color-text-secondary);
   font-size: 0.875rem;

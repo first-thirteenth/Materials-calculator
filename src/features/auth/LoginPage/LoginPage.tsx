@@ -4,20 +4,31 @@ import { useTranslation } from "react-i18next";
 import { Mail, Lock } from "lucide-react";
 import { useAuth } from "../../../app/hooks/useAuth";
 import { getAuthErrorMessage } from "../../../shared/utils/getAuthErrorMessage";
+import { FirebaseAuthDiagnostics } from "../../../shared/components/FirebaseAuthDiagnostics/FirebaseAuthDiagnostics";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
   const { t } = useTranslation();
-  const { signIn, signInWithGoogle } = useAuth();
+  const {
+    signIn,
+    signInWithGoogle,
+    redirectAuthError,
+    clearRedirectAuthError,
+  } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const redirectErrorMessage = redirectAuthError
+    ? getAuthErrorMessage(redirectAuthError, t)
+    : "";
+  const displayedError = error || redirectErrorMessage;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    clearRedirectAuthError();
     setError("");
     setLoading(true);
     try {
@@ -31,12 +42,13 @@ export function LoginPage() {
   }
 
   async function handleGoogle() {
+    clearRedirectAuthError();
     setError("");
     setLoading(true);
     try {
       await signInWithGoogle();
-      navigate("/");
     } catch (error) {
+      console.error("[Auth][Google][LoginPage]", error);
       setError(getAuthErrorMessage(error, t));
     } finally {
       setLoading(false);
@@ -76,7 +88,7 @@ export function LoginPage() {
             />
           </div>
 
-          {error && <p className={styles.error}>{error}</p>}
+          {displayedError && <p className={styles.error}>{displayedError}</p>}
 
           <button
             className={styles.btnPrimary}
@@ -117,6 +129,8 @@ export function LoginPage() {
           </svg>
           {t("auth.googleBtn")}
         </button>
+        <p className={styles.redirectHint}>{t("auth.googleRedirectHint")}</p>
+        <FirebaseAuthDiagnostics />
 
         <p className={styles.footer}>
           {t("auth.noAccount")}{" "}

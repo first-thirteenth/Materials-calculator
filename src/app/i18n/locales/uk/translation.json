@@ -36,6 +36,7 @@
     "loginBtn": "Увійти",
     "registerBtn": "Створити акаунт",
     "googleBtn": "Продовжити з Google",
+    "googleRedirectHint": "Після натискання відбудеться перенаправлення на Google у цій самій вкладці",
     "or": "або",
     "noAccount": "Немає акаунту?",
     "hasAccount": "Вже є акаунт?",
