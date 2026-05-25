@@ -1,34 +1,115 @@
 .wrap {
-  display: flex;
-  gap: 2px;
-  background: var(--color-bg-secondary, rgba(120, 120, 128, 0.16));
-  border-radius: 8px;
-  padding: 2px;
+  position: relative;
 }
 
-.btn {
-  background: transparent;
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-bg-secondary, rgba(120, 120, 128, 0.16));
   border: none;
-  border-radius: 6px;
-  color: var(--color-text-secondary);
+  border-radius: 8px;
+  color: var(--color-text);
   cursor: pointer;
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.3px;
-  padding: 3px 7px;
-  transition:
-    background 0.15s,
-    color 0.15s;
+  padding: 5px 8px;
+  transition: opacity 0.15s;
 }
 
-.btn:active {
+.trigger:active {
   opacity: 0.7;
 }
 
-.active {
-  background: var(--color-bg-card);
+.flag {
+  width: 18px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.flagItem {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.code {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   color: var(--color-text);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.chevron {
+  color: var(--color-text-secondary);
+  transition: transform 0.2s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ─── Dropdown ───────────────────────────────────────── */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--color-bg-card);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  min-width: 160px;
+  overflow: hidden;
+  padding: 6px 0;
+  z-index: 100;
+  animation: dropIn 0.15s ease;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  transition: background 0.1s;
+}
+
+.option:active {
+  background: var(--color-bg-secondary, rgba(120, 120, 128, 0.12));
+}
+
+.optionActive {
+  color: var(--color-primary);
+}
+
+.optionLabel {
+  flex: 1;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.check {
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
 }
