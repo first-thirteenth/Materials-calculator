@@ -1,7 +1,7 @@
 import { Layers, Paintbrush, Package, LogOut, UserCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../app/hooks/useTheme";
-import { useAuth } from "../../app/context/AuthContext";
+import { useAuth } from "../../app/hooks/useAuth";
 import { ThemeToggle } from "../../shared/components/ThemeToggle/ThemeToggle";
 import { CalculatorCard } from "../../shared/components/CalculatorCard/CalculatorCard";
 import { LangSwitcher } from "../../shared/components/LangSwitcher/LangSwitcher";

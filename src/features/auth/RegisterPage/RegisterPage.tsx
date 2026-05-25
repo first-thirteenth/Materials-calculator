@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Lock, User } from "lucide-react";
-import { useAuth } from "../../../app/context/AuthContext";
+import { useAuth } from "../../../app/hooks/useAuth";
 import styles from "./RegisterPage.module.css";
 
 export function RegisterPage() {
