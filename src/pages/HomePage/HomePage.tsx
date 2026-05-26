@@ -1,4 +1,11 @@
-import { Layers, Paintbrush, Package, LogOut, UserCircle, History } from "lucide-react";
+import {
+  Layers,
+  Paintbrush,
+  Package,
+  LogOut,
+  UserCircle,
+  History,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../app/hooks/useTheme";

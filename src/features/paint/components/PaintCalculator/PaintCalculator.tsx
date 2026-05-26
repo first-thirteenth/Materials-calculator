@@ -61,7 +61,9 @@ export function PaintCalculator() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [initialValues] = useState(readStoredValues);
-  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">(
+    "idle",
+  );
 
   const [roomAreaM2, setRoomAreaM2] = useState(initialValues.roomAreaM2);
   const [coats, setCoats] = useState(initialValues.coats);
