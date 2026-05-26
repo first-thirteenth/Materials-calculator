@@ -58,5 +58,31 @@
     "errorAccountExists": "Ten email już istnieje z inną metodą logowania",
     "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
+  },
+  "brickCalculator": {
+    "back": "Wstecz",
+    "title": "Kalkulator cegły",
+    "subtitle": "Oszacuj liczbę cegieł na podstawie powierzchni ścian, wymiaru cegły, grubości muru i zapasu.",
+    "inputs": "Dane wejściowe",
+    "fields": {
+      "wallArea": "Powierzchnia ścian (m2)",
+      "brickLength": "Długość cegły (mm)",
+      "brickHeight": "Wysokość cegły (mm)",
+      "mortar": "Grubość spoiny (mm)",
+      "thickness": "Grubość muru",
+      "waste": "Zapas (%)"
+    },
+    "thickness": {
+      "half": "Pół cegły",
+      "one": "1 cegła",
+      "oneAndHalf": "1.5 cegły",
+      "two": "2 cegły"
+    },
+    "result": {
+      "title": "Wynik",
+      "withWaste": "Cegły z zapasem",
+      "withoutWaste": "Cegły bez zapasu",
+      "perSquareMeter": "Cegieł na 1 m2"
+    }
   }
 }

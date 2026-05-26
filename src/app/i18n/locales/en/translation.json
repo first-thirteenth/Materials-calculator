@@ -58,5 +58,31 @@
     "errorAccountExists": "This email already exists with a different sign-in method",
     "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
+  },
+  "brickCalculator": {
+    "back": "Back",
+    "title": "Brick Calculator",
+    "subtitle": "Estimate total brick count from wall area, brick size, masonry thickness and reserve.",
+    "inputs": "Input",
+    "fields": {
+      "wallArea": "Wall area (m2)",
+      "brickLength": "Brick length (mm)",
+      "brickHeight": "Brick height (mm)",
+      "mortar": "Mortar joint (mm)",
+      "thickness": "Wall thickness",
+      "waste": "Reserve (%)"
+    },
+    "thickness": {
+      "half": "Half-brick",
+      "one": "1 brick",
+      "oneAndHalf": "1.5 bricks",
+      "two": "2 bricks"
+    },
+    "result": {
+      "title": "Result",
+      "withWaste": "Bricks with reserve",
+      "withoutWaste": "Bricks without reserve",
+      "perSquareMeter": "Bricks per 1 m2"
+    }
   }
 }

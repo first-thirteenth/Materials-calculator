@@ -1,5 +1,6 @@
 import { Layers, Paintbrush, Package, LogOut, UserCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../app/hooks/useTheme";
 import { useAuth } from "../../app/hooks/useAuth";
 import { ThemeToggle } from "../../shared/components/ThemeToggle/ThemeToggle";
@@ -8,15 +9,29 @@ import { LangSwitcher } from "../../shared/components/LangSwitcher/LangSwitcher"
 import styles from "./HomePage.module.css";
 
 const CALCULATOR_KEYS = [
-  { key: "brick", icon: <Layers size={22} />, iconBg: "var(--icon-orange)" },
-  { key: "paint", icon: <Paintbrush size={22} />, iconBg: "var(--icon-blue)" },
-  { key: "concrete", icon: <Package size={22} />, iconBg: "var(--icon-gray)" },
+  {
+    key: "brick",
+    icon: <Layers size={22} />,
+    iconBg: "var(--icon-orange)",
+    path: "/brick",
+  },
+  {
+    key: "paint",
+    icon: <Paintbrush size={22} />,
+    iconBg: "var(--icon-blue)",
+  },
+  {
+    key: "concrete",
+    icon: <Package size={22} />,
+    iconBg: "var(--icon-gray)",
+  },
 ];
 
 export function HomePage() {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.app}>
@@ -63,6 +78,7 @@ export function HomePage() {
               iconBg={calc.iconBg}
               title={t(`calculators.${calc.key}.title`)}
               description={t(`calculators.${calc.key}.description`)}
+              onClick={calc.path ? () => navigate(calc.path) : undefined}
             />
           ))}
         </div>
