@@ -37,7 +37,7 @@ export type CalculationData =
   | PaintCalculationRecord
   | ConcreteCalculationRecord;
 
-export interface CalculationRecord extends CalculationData {
+export type CalculationRecord = CalculationData & {
   id: string;
   createdAt: Timestamp;
-}
+};
