@@ -62,7 +62,9 @@ export function ConcreteCalculator() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [initialValues] = useState(readStoredValues);
-  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">(
+    "idle",
+  );
 
   const [lengthM, setLengthM] = useState(initialValues.lengthM);
   const [widthM, setWidthM] = useState(initialValues.widthM);

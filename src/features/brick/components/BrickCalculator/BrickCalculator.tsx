@@ -94,7 +94,9 @@ export function BrickCalculator() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [initialValues] = useState(readStoredValues);
-  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">(
+    "idle",
+  );
 
   const [wallAreaM2, setWallAreaM2] = useState(initialValues.wallAreaM2);
   const [brickLengthMm, setBrickLengthMm] = useState(
@@ -172,7 +174,14 @@ export function BrickCalculator() {
     try {
       await saveCalculation(user.uid, {
         type: "brick",
-        input: { wallAreaM2, brickLengthMm, brickHeightMm, mortarJointMm, wallThicknessFactor, wastePercent },
+        input: {
+          wallAreaM2,
+          brickLengthMm,
+          brickHeightMm,
+          mortarJointMm,
+          wallThicknessFactor,
+          wastePercent,
+        },
         result,
       });
       setSaveStatus("saved");
@@ -181,7 +190,16 @@ export function BrickCalculator() {
     } finally {
       setTimeout(() => setSaveStatus("idle"), 2000);
     }
-  }, [user, wallAreaM2, brickLengthMm, brickHeightMm, mortarJointMm, wallThicknessFactor, wastePercent, result]);
+  }, [
+    user,
+    wallAreaM2,
+    brickLengthMm,
+    brickHeightMm,
+    mortarJointMm,
+    wallThicknessFactor,
+    wastePercent,
+    result,
+  ]);
 
   return (
     <div className={styles.page}>
