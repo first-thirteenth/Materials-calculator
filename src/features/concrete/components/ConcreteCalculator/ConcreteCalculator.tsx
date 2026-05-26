@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { calculateConcrete } from "../../utils/calculateConcrete";
+import { saveCalculation } from "../../../history/services/historyService";
+import { useAuth } from "../../../../app/hooks/useAuth";
 import styles from "./ConcreteCalculator.module.css";
 
 const CONCRETE_CALCULATOR_STORAGE_KEY = "concrete-calculator:v1";
@@ -58,7 +60,9 @@ function readStoredValues(): ConcreteFormValues {
 export function ConcreteCalculator() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [initialValues] = useState(readStoredValues);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
 
   const [lengthM, setLengthM] = useState(initialValues.lengthM);
   const [widthM, setWidthM] = useState(initialValues.widthM);
@@ -89,6 +93,22 @@ export function ConcreteCalculator() {
       // Ignore storage errors
     }
   }, [lengthM, widthM, thicknessM, wastePercent]);
+
+  const handleSave = useCallback(async () => {
+    if (!user) return;
+    try {
+      await saveCalculation(user.uid, {
+        type: "concrete",
+        input: { lengthM, widthM, thicknessM, wastePercent },
+        result,
+      });
+      setSaveStatus("saved");
+    } catch {
+      setSaveStatus("error");
+    } finally {
+      setTimeout(() => setSaveStatus("idle"), 2000);
+    }
+  }, [user, lengthM, widthM, thicknessM, wastePercent, result]);
 
   return (
     <div className={styles.page}>
@@ -197,6 +217,19 @@ export function ConcreteCalculator() {
             <p className={styles.resultHint}>
               {t("concreteCalculator.result.bags50kg")}
             </p>
+
+            <button
+              type="button"
+              className={styles.saveButton}
+              onClick={handleSave}
+              disabled={saveStatus !== "idle"}
+            >
+              {saveStatus === "saved"
+                ? t("history.saved")
+                : saveStatus === "error"
+                  ? t("history.saveError")
+                  : t("history.save")}
+            </button>
           </section>
         </div>
       </main>

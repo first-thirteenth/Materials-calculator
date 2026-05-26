@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { calculatePaint } from "../../utils/calculatePaint";
+import { saveCalculation } from "../../../history/services/historyService";
+import { useAuth } from "../../../../app/hooks/useAuth";
 import styles from "./PaintCalculator.module.css";
 
 const PAINT_CALCULATOR_STORAGE_KEY = "paint-calculator:v1";
@@ -57,7 +59,9 @@ function readStoredValues(): PaintFormValues {
 export function PaintCalculator() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [initialValues] = useState(readStoredValues);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
 
   const [roomAreaM2, setRoomAreaM2] = useState(initialValues.roomAreaM2);
   const [coats, setCoats] = useState(initialValues.coats);
@@ -86,6 +90,22 @@ export function PaintCalculator() {
       // Ignore storage errors
     }
   }, [roomAreaM2, coats, coverageM2perL, wastePercent]);
+
+  const handleSave = useCallback(async () => {
+    if (!user) return;
+    try {
+      await saveCalculation(user.uid, {
+        type: "paint",
+        input: { roomAreaM2, coats, coverageM2perL, wastePercent },
+        result,
+      });
+      setSaveStatus("saved");
+    } catch {
+      setSaveStatus("error");
+    } finally {
+      setTimeout(() => setSaveStatus("idle"), 2000);
+    }
+  }, [user, roomAreaM2, coats, coverageM2perL, wastePercent, result]);
 
   return (
     <div className={styles.page}>
@@ -192,6 +212,19 @@ export function PaintCalculator() {
             <p className={styles.resultHint}>
               {t("paintCalculator.result.perCoat")}
             </p>
+
+            <button
+              type="button"
+              className={styles.saveButton}
+              onClick={handleSave}
+              disabled={saveStatus !== "idle"}
+            >
+              {saveStatus === "saved"
+                ? t("history.saved")
+                : saveStatus === "error"
+                  ? t("history.saveError")
+                  : t("history.save")}
+            </button>
           </section>
         </div>
       </main>

@@ -79,6 +79,23 @@
   opacity: 0.6;
 }
 
+.historyBtn {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+}
+
+.historyBtn:hover {
+  color: var(--color-text);
+}
+
 /* ─── Main ───────────────────────────────────────────── */
 .main {
   max-width: 960px;

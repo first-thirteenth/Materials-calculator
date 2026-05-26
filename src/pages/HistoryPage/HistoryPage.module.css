@@ -49,86 +49,75 @@
   padding: 1.5rem 1.25rem 3rem;
 }
 
-.subtitle {
+.empty {
   color: var(--color-text-secondary);
-  margin-bottom: 1.25rem;
+  text-align: center;
+  margin-top: 3rem;
   font-size: 0.9375rem;
 }
 
-.grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.card {
+.item {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1rem;
 }
 
-.cardTitle {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.75rem;
-}
-
-.field {
+.itemHeader {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  margin-bottom: 0.85rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-.field:last-child {
-  margin-bottom: 0;
-}
-
-.label {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-}
-
-.input {
-  border: 1px solid var(--color-border);
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text);
-  border-radius: 10px;
-  padding: 0.55rem 0.65rem;
-  font-size: 0.95rem;
-  width: 100%;
-}
-
-.resultValue {
-  font-size: 1.6rem;
-  line-height: 1.1;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
-}
-
-.resultHint {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
-}
-
-.saveButton {
-  margin-top: 1rem;
-  width: 100%;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 10px;
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   background-color: var(--color-primary);
   color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.date {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.deleteBtn {
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.saveButton:disabled {
-  opacity: 0.7;
-  cursor: default;
+.deleteBtn:hover {
+  color: var(--color-danger, #e53e3e);
+  background-color: var(--color-bg-secondary);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
 }

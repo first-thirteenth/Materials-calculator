@@ -59,6 +59,34 @@
     "errorTooManyRequests": "Слишком много попыток. Попробуйте позже",
     "errorGeneral": "Что-то пошло не так. Попробуйте снова"
   },
+  "history": {
+    "title": "История расчётов",
+    "empty": "Сохранённых расчётов пока нет",
+    "delete": "Удалить",
+    "save": "Сохранить",
+    "saved": "Сохранено!",
+    "saveError": "Ошибка сохранения",
+    "types": {
+      "brick": "Кирпич",
+      "paint": "Краска",
+      "concrete": "Бетон"
+    },
+    "brick": {
+      "bricksWithWaste": "Кирпичей (с запасом)",
+      "bricksWithoutWaste": "Кирпичей (без запаса)",
+      "bricksPerM2": "Кирпичей на м²"
+    },
+    "paint": {
+      "litersWithWaste": "Литров (с запасом)",
+      "litersWithoutWaste": "Литров (без запаса)",
+      "litersPerCoat": "Литров на слой"
+    },
+    "concrete": {
+      "volumeWithWaste": "м³ (с запасом)",
+      "volumeWithoutWaste": "м³ (без запаса)",
+      "bags50kg": "Мешков по 50 кг"
+    }
+  },
   "concreteCalculator": {
     "back": "Назад",
     "title": "Калькулятор бетона",
