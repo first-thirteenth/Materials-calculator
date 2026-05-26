@@ -96,6 +96,22 @@
   color: var(--color-text);
 }
 
+.avatarBtn {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--color-text-secondary);
+}
+
+.avatarBtn:hover {
+  opacity: 0.8;
+}
+
 /* ─── Main ───────────────────────────────────────────── */
 .main {
   max-width: 960px;
