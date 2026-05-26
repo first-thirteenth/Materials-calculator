@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { LoginPage } from "../features/auth/LoginPage/LoginPage";
 import { RegisterPage } from "../features/auth/RegisterPage/RegisterPage";
+import { BrickCalculator } from "../features/brick/components/BrickCalculator/BrickCalculator";
 import { ProtectedRoute } from "../shared/components/ProtectedRoute/ProtectedRoute";
 import { HomePage } from "../pages/HomePage/HomePage";
 
@@ -17,6 +18,14 @@ export function AppRouter() {
             element={
               <ProtectedRoute>
                 <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/brick"
+            element={
+              <ProtectedRoute>
+                <BrickCalculator />
               </ProtectedRoute>
             }
           />

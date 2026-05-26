@@ -70,8 +70,9 @@ Notes:
 - npm run build: type-check and build production bundle.
 - npm run preview: preview built app locally.
 - npm run lint: run ESLint.
+- npm run test:unit: run unit tests for calculation logic (Vitest).
 - npm run test:i18n: verify locale key consistency across translations.
-- npm run test:smoke: run quick i18n and e2e smoke checks in sequence.
+- npm run test:smoke: run i18n, unit, and e2e smoke checks in sequence.
 - npm run test:e2e: run Playwright e2e smoke tests.
 - npm run test:e2e:ui: run Playwright tests in interactive UI mode.
 - npm run firebase:login: login to Firebase CLI.
