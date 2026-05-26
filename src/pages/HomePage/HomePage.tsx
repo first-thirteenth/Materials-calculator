@@ -52,15 +52,22 @@ export function HomePage() {
               <History size={20} />
             </button>
             <div className={styles.userMenu}>
-              {user?.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt={user.displayName ?? ""}
-                  className={styles.avatar}
-                />
-              ) : (
-                <UserCircle size={22} className={styles.avatarIcon} />
-              )}
+              <button
+                className={styles.avatarBtn}
+                onClick={() => navigate("/profile")}
+                aria-label={t("profile.title")}
+                title={t("profile.title")}
+              >
+                {user?.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName ?? ""}
+                    className={styles.avatar}
+                  />
+                ) : (
+                  <UserCircle size={22} className={styles.avatarIcon} />
+                )}
+              </button>
               <button
                 className={styles.signOutBtn}
                 onClick={signOut}

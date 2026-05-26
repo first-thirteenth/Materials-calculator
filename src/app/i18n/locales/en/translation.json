@@ -59,6 +59,18 @@
     "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
   },
+  "profile": {
+    "title": "Profile",
+    "back": "Back",
+    "name": "Name",
+    "email": "Email",
+    "namePlaceholder": "Add your name",
+    "editName": "Edit name",
+    "save": "Save",
+    "cancel": "Cancel",
+    "saveError": "Failed to save name",
+    "signOut": "Sign out"
+  },
   "history": {
     "title": "Calculation History",
     "empty": "No saved calculations yet",

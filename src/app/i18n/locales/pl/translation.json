@@ -59,6 +59,18 @@
     "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   },
+  "profile": {
+    "title": "Profil",
+    "back": "Wróć",
+    "name": "Imię",
+    "email": "Email",
+    "namePlaceholder": "Dodaj imię",
+    "editName": "Edytuj imię",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "saveError": "Nie udało się zapisać imienia",
+    "signOut": "Wyloguj się"
+  },
   "history": {
     "title": "Historia obliczeń",
     "empty": "Brak zapisanych obliczeń",
