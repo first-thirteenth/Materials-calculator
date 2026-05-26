@@ -4,6 +4,7 @@ import { LoginPage } from "../features/auth/LoginPage/LoginPage";
 import { RegisterPage } from "../features/auth/RegisterPage/RegisterPage";
 import { BrickCalculator } from "../features/brick/components/BrickCalculator/BrickCalculator";
 import { PaintCalculator } from "../features/paint/components/PaintCalculator/PaintCalculator";
+import { ConcreteCalculator } from "../features/concrete/components/ConcreteCalculator/ConcreteCalculator";
 import { ProtectedRoute } from "../shared/components/ProtectedRoute/ProtectedRoute";
 import { HomePage } from "../pages/HomePage/HomePage";
 
@@ -35,6 +36,14 @@ export function AppRouter() {
             element={
               <ProtectedRoute>
                 <PaintCalculator />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/concrete"
+            element={
+              <ProtectedRoute>
+                <ConcreteCalculator />
               </ProtectedRoute>
             }
           />

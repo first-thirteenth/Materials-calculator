@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
   },
+  "concreteCalculator": {
+    "back": "Back",
+    "title": "Concrete Calculator",
+    "subtitle": "Estimate the volume of concrete for a foundation or screed based on dimensions and waste.",
+    "inputs": "Input",
+    "fields": {
+      "length": "Length (m)",
+      "width": "Width (m)",
+      "thickness": "Thickness (m)",
+      "waste": "Reserve (%)"
+    },
+    "result": {
+      "title": "Result",
+      "volumeWithWaste": "m³ with reserve",
+      "volumeWithoutWaste": "m³ without reserve",
+      "bags50kg": "Bags 50 kg"
+    }
+  },
   "paintCalculator": {
     "back": "Back",
     "title": "Paint Calculator",

@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Слишком много попыток. Попробуйте позже",
     "errorGeneral": "Что-то пошло не так. Попробуйте снова"
   },
+  "concreteCalculator": {
+    "back": "Назад",
+    "title": "Калькулятор бетона",
+    "subtitle": "Рассчитайте объём бетона для фундамента или стяжки по размерам и запасу.",
+    "inputs": "Вводные данные",
+    "fields": {
+      "length": "Длина (м)",
+      "width": "Ширина (м)",
+      "thickness": "Толщина (м)",
+      "waste": "Запас (%)"
+    },
+    "result": {
+      "title": "Результат",
+      "volumeWithWaste": "м³ с запасом",
+      "volumeWithoutWaste": "м³ без запаса",
+      "bags50kg": "Мешков по 50 кг"
+    }
+  },
   "paintCalculator": {
     "back": "Назад",
     "title": "Калькулятор краски",
