@@ -25,6 +25,7 @@ const CALCULATOR_KEYS = [
     key: "concrete",
     icon: <Package size={22} />,
     iconBg: "var(--icon-gray)",
+    path: "/concrete",
   },
 ];
 

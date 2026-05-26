@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   },
+  "concreteCalculator": {
+    "back": "Wstecz",
+    "title": "Kalkulator betonu",
+    "subtitle": "Oblicz objętość betonu do fundamentów lub wylewki na podstawie wymiarów i zapasu.",
+    "inputs": "Dane wejściowe",
+    "fields": {
+      "length": "Długość (m)",
+      "width": "Szerokość (m)",
+      "thickness": "Grubość (m)",
+      "waste": "Zapas (%)"
+    },
+    "result": {
+      "title": "Wynik",
+      "volumeWithWaste": "m³ z zapasem",
+      "volumeWithoutWaste": "m³ bez zapasu",
+      "bags50kg": "Worki 50 kg"
+    }
+  },
   "paintCalculator": {
     "back": "Wstecz",
     "title": "Kalkulator farby",

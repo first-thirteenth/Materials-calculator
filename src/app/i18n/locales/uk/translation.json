@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Занадто багато спроб. Спробуйте пізніше",
     "errorGeneral": "Щось пішло не так. Спробуйте знову"
   },
+  "concreteCalculator": {
+    "back": "Назад",
+    "title": "Калькулятор бетону",
+    "subtitle": "Розрахуйте об'єм бетону для фундаменту або стяжки за розмірами та запасом.",
+    "inputs": "Вхідні дані",
+    "fields": {
+      "length": "Довжина (м)",
+      "width": "Ширина (м)",
+      "thickness": "Товщина (м)",
+      "waste": "Запас (%)"
+    },
+    "result": {
+      "title": "Результат",
+      "volumeWithWaste": "м³ із запасом",
+      "volumeWithoutWaste": "м³ без запасу",
+      "bags50kg": "Мішків по 50 кг"
+    }
+  },
   "paintCalculator": {
     "back": "Назад",
     "title": "Калькулятор фарби",
