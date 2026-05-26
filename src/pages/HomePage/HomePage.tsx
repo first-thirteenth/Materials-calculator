@@ -1,4 +1,4 @@
-import { Layers, Paintbrush, Package, LogOut, UserCircle } from "lucide-react";
+import { Layers, Paintbrush, Package, LogOut, UserCircle, History } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../app/hooks/useTheme";
@@ -43,6 +43,14 @@ export function HomePage() {
           <div className={styles.headerActions}>
             <LangSwitcher />
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <button
+              className={styles.historyBtn}
+              onClick={() => navigate("/history")}
+              aria-label={t("history.title")}
+              title={t("history.title")}
+            >
+              <History size={20} />
+            </button>
             <div className={styles.userMenu}>
               {user?.photoURL ? (
                 <img

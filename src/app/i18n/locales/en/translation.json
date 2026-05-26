@@ -59,6 +59,34 @@
     "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
   },
+  "history": {
+    "title": "Calculation History",
+    "empty": "No saved calculations yet",
+    "delete": "Delete",
+    "save": "Save",
+    "saved": "Saved!",
+    "saveError": "Failed to save",
+    "types": {
+      "brick": "Brick",
+      "paint": "Paint",
+      "concrete": "Concrete"
+    },
+    "brick": {
+      "bricksWithWaste": "Bricks (with reserve)",
+      "bricksWithoutWaste": "Bricks (without reserve)",
+      "bricksPerM2": "Bricks per m²"
+    },
+    "paint": {
+      "litersWithWaste": "Litres (with reserve)",
+      "litersWithoutWaste": "Litres (without reserve)",
+      "litersPerCoat": "Litres per coat"
+    },
+    "concrete": {
+      "volumeWithWaste": "m³ (with reserve)",
+      "volumeWithoutWaste": "m³ (without reserve)",
+      "bags50kg": "Bags 50 kg"
+    }
+  },
   "concreteCalculator": {
     "back": "Back",
     "title": "Concrete Calculator",

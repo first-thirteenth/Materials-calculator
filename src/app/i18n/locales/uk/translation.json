@@ -59,6 +59,34 @@
     "errorTooManyRequests": "Занадто багато спроб. Спробуйте пізніше",
     "errorGeneral": "Щось пішло не так. Спробуйте знову"
   },
+  "history": {
+    "title": "Історія розрахунків",
+    "empty": "Збережених розрахунків поки немає",
+    "delete": "Видалити",
+    "save": "Зберегти",
+    "saved": "Збережено!",
+    "saveError": "Помилка збереження",
+    "types": {
+      "brick": "Цегла",
+      "paint": "Фарба",
+      "concrete": "Бетон"
+    },
+    "brick": {
+      "bricksWithWaste": "Цегли (із запасом)",
+      "bricksWithoutWaste": "Цегли (без запасу)",
+      "bricksPerM2": "Цегли на м²"
+    },
+    "paint": {
+      "litersWithWaste": "Літрів (із запасом)",
+      "litersWithoutWaste": "Літрів (без запасу)",
+      "litersPerCoat": "Літрів на шар"
+    },
+    "concrete": {
+      "volumeWithWaste": "м³ (із запасом)",
+      "volumeWithoutWaste": "м³ (без запасу)",
+      "bags50kg": "Мішків по 50 кг"
+    }
+  },
   "concreteCalculator": {
     "back": "Назад",
     "title": "Калькулятор бетону",

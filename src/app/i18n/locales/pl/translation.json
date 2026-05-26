@@ -59,6 +59,34 @@
     "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   },
+  "history": {
+    "title": "Historia obliczeń",
+    "empty": "Brak zapisanych obliczeń",
+    "delete": "Usuń",
+    "save": "Zapisz",
+    "saved": "Zapisano!",
+    "saveError": "Błąd zapisu",
+    "types": {
+      "brick": "Cegła",
+      "paint": "Farba",
+      "concrete": "Beton"
+    },
+    "brick": {
+      "bricksWithWaste": "Cegły (z zapasem)",
+      "bricksWithoutWaste": "Cegły (bez zapasu)",
+      "bricksPerM2": "Cegły na m²"
+    },
+    "paint": {
+      "litersWithWaste": "Litry (z zapasem)",
+      "litersWithoutWaste": "Litry (bez zapasu)",
+      "litersPerCoat": "Litry na warstwę"
+    },
+    "concrete": {
+      "volumeWithWaste": "m³ (z zapasem)",
+      "volumeWithoutWaste": "m³ (bez zapasu)",
+      "bags50kg": "Worki 50 kg"
+    }
+  },
   "concreteCalculator": {
     "back": "Wstecz",
     "title": "Kalkulator betonu",
