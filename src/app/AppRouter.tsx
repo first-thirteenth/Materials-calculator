@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { LoginPage } from "../features/auth/LoginPage/LoginPage";
 import { RegisterPage } from "../features/auth/RegisterPage/RegisterPage";
 import { BrickCalculator } from "../features/brick/components/BrickCalculator/BrickCalculator";
+import { PaintCalculator } from "../features/paint/components/PaintCalculator/PaintCalculator";
 import { ProtectedRoute } from "../shared/components/ProtectedRoute/ProtectedRoute";
 import { HomePage } from "../pages/HomePage/HomePage";
 
@@ -26,6 +27,14 @@ export function AppRouter() {
             element={
               <ProtectedRoute>
                 <BrickCalculator />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/paint"
+            element={
+              <ProtectedRoute>
+                <PaintCalculator />
               </ProtectedRoute>
             }
           />

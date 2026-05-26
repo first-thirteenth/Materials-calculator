@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Zbyt wiele prób. Spróbuj ponownie później",
     "errorGeneral": "Coś poszło nie tak. Spróbuj ponownie"
   },
+  "paintCalculator": {
+    "back": "Wstecz",
+    "title": "Kalkulator farby",
+    "subtitle": "Oszacuj ilość farby do ścian i sufitów na podstawie powierzchni, liczby warstw i wydajności.",
+    "inputs": "Dane wejściowe",
+    "fields": {
+      "roomArea": "Powierzchnia pomieszczenia (m²)",
+      "coats": "Liczba warstw",
+      "coverage": "Wydajność (m²/l)",
+      "waste": "Zapas (%)"
+    },
+    "result": {
+      "title": "Wynik",
+      "withWaste": "Litry z zapasem",
+      "withoutWaste": "Litry bez zapasu",
+      "perCoat": "Litry na 1 warstwę"
+    }
+  },
   "brickCalculator": {
     "back": "Wstecz",
     "title": "Kalkulator cegły",

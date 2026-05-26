@@ -19,6 +19,7 @@ const CALCULATOR_KEYS = [
     key: "paint",
     icon: <Paintbrush size={22} />,
     iconBg: "var(--icon-blue)",
+    path: "/paint",
   },
   {
     key: "concrete",

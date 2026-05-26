@@ -59,6 +59,24 @@
     "errorTooManyRequests": "Too many attempts. Please try again later",
     "errorGeneral": "Something went wrong. Please try again"
   },
+  "paintCalculator": {
+    "back": "Back",
+    "title": "Paint Calculator",
+    "subtitle": "Estimate the amount of paint for walls and ceilings based on area, number of coats and coverage.",
+    "inputs": "Input",
+    "fields": {
+      "roomArea": "Room area (m²)",
+      "coats": "Number of coats",
+      "coverage": "Coverage (m²/L)",
+      "waste": "Reserve (%)"
+    },
+    "result": {
+      "title": "Result",
+      "withWaste": "Litres with reserve",
+      "withoutWaste": "Litres without reserve",
+      "perCoat": "Litres per coat"
+    }
+  },
   "brickCalculator": {
     "back": "Back",
     "title": "Brick Calculator",
