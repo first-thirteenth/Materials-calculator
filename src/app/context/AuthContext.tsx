@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
   signOut as firebaseSignOut,
   updateProfile,
   type User,
@@ -15,8 +14,6 @@ import { AuthContext } from "./AuthContextValue";
 import { logAuthDebug } from "../../shared/utils/logAuthDebug";
 
 let redirectResultPromise: Promise<User | null> | null = null;
-const redirectPendingKey = "mc:googleRedirectPending";
-const popupTimeoutMs = 12000;
 
 function getRedirectResultOnce() {
   if (!redirectResultPromise) {
@@ -30,15 +27,6 @@ function getRedirectResultOnce() {
   }
 
   return redirectResultPromise;
-}
-
-function isAuthDebugEnabled() {
-  if (import.meta.env.DEV) {
-    return true;
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  return params.get("debugAuth") === "1";
 }
 
 function getAuthErrorCode(error: unknown) {
@@ -61,7 +49,7 @@ function isGoogleProviderDisabledError(error: unknown) {
   );
 }
 
-function shouldFallbackToRedirect(error: unknown) {
+function isPopupIssue(error: unknown) {
   const code = getAuthErrorCode(error);
   const message = error instanceof Error ? error.message.toLowerCase() : "";
 
@@ -116,31 +104,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    if (isAuthDebugEnabled()) {
-      console.info("[Auth][Debug] AuthProvider mounted", {
-        href: window.location.href,
-      });
-    }
-
     void getRedirectResultOnce()
       .then((resultUser) => {
-        const hadRedirectAttempt =
-          window.sessionStorage.getItem(redirectPendingKey) === "1";
-
-        if (isAuthDebugEnabled()) {
-          console.info("[Auth][Debug] RedirectResult resolved", {
-            hasUser: Boolean(resultUser),
-            hadRedirectAttempt,
-            href: window.location.href,
-          });
-        }
-
         if (resultUser) {
-          window.sessionStorage.removeItem(redirectPendingKey);
           setUser(resultUser);
-        } else if (hadRedirectAttempt) {
-          window.sessionStorage.removeItem(redirectPendingKey);
-          setRedirectAuthError({ code: "auth/redirect-result-missing" });
         }
       })
       .catch((error: unknown) => {
@@ -161,14 +128,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      if (isAuthDebugEnabled()) {
-        console.info("[Auth][Debug] onAuthStateChanged", {
-          hasUser: Boolean(firebaseUser),
-          uid: firebaseUser?.uid ?? null,
-          href: window.location.href,
-        });
-      }
-
       setUser(firebaseUser);
       setLoading(false);
     });
@@ -216,18 +175,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     setRedirectAuthError(null);
-    window.sessionStorage.removeItem(redirectPendingKey);
 
     try {
-      await Promise.race([
-        signInWithPopup(safeAuth, safeGoogleProvider),
-        new Promise<never>((_, reject) => {
-          window.setTimeout(
-            () => reject(new Error("popup-timeout")),
-            popupTimeoutMs,
-          );
-        }),
-      ]);
+      await signInWithPopup(safeAuth, safeGoogleProvider);
     } catch (error) {
       logAuthDebug("PopupSignIn", error);
 
@@ -235,10 +185,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setIsGoogleSignInEnabled(false);
       }
 
-      if (shouldFallbackToRedirect(error)) {
-        window.sessionStorage.setItem(redirectPendingKey, "1");
-        await signInWithRedirect(safeAuth, safeGoogleProvider);
-        return;
+      if (isPopupIssue(error)) {
+        // Keep the original popup error visible to user instead of silently
+        // falling back to redirect flow, which can be blocked by browser policy.
+        setRedirectAuthError(error);
       }
 
       throw error;

@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { Mail, Lock } from "lucide-react";
 import { useAuth } from "../../../app/hooks/useAuth";
 import { getAuthErrorMessage } from "../../../shared/utils/getAuthErrorMessage";
-import { FirebaseAuthDiagnostics } from "../../../shared/components/FirebaseAuthDiagnostics/FirebaseAuthDiagnostics";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
@@ -143,7 +142,6 @@ export function LoginPage() {
             ? t("auth.googleRedirectHint")
             : t("auth.googleDisabledHint")}
         </p>
-        <FirebaseAuthDiagnostics />
 
         <p className={styles.footer}>
           {t("auth.noAccount")}{" "}

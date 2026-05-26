@@ -53,8 +53,6 @@ export function getAuthErrorMessage(error: unknown, t: TFunction): string {
       return message.includes("resource-not-found")
         ? t("auth.errorAuthConfigurationMissing")
         : t("auth.errorGeneral");
-    case "auth/redirect-result-missing":
-      return t("auth.errorRedirectResultMissing");
     case "auth/network-request-failed":
       return t("auth.errorNetwork");
     case "auth/invalid-api-key":

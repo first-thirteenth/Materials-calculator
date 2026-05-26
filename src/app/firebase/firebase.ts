@@ -72,27 +72,6 @@ export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
 export const googleProvider = app ? new GoogleAuthProvider() : null;
 
-export interface FirebaseAuthDiagnostics {
-  projectId: string;
-  authDomain: string;
-  isFirebaseConfigured: boolean;
-  isProdBuild: boolean;
-  isAuthDomainLocalhost: boolean;
-}
-
-export function getFirebaseAuthDiagnostics(): FirebaseAuthDiagnostics {
-  const authDomain = String(firebaseConfig.authDomain ?? "").trim();
-
-  return {
-    projectId: String(firebaseConfig.projectId ?? "").trim(),
-    authDomain,
-    isFirebaseConfigured,
-    isProdBuild: import.meta.env.PROD,
-    isAuthDomainLocalhost:
-      authDomain === "localhost" || authDomain.startsWith("localhost:"),
-  };
-}
-
 export function getFirebaseAuthOrThrow() {
   if (!auth || !googleProvider) {
     throw new Error(
